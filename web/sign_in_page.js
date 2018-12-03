@@ -18,6 +18,8 @@ $('.form-signin').submit(function(e){
   $.ajax({
     type: "POST",
     url: url+"/auth",
+    xhrFields: { withCredentials: true },
+    crossDomain: true,
     data: JSON.stringify({
         user_name:      email,
         email:          email,
@@ -25,16 +27,18 @@ $('.form-signin').submit(function(e){
     }),
     contentType: "application/json; charset=utf-8", // this
     dataType: "json", // and this
-    success: function (data) {
+    success: function (data, xhr) {
         console.log(data);
-        if (data) {
-             window.location.href="http://localhost:8080/dashboard.html"
-        }else {
-            alert("Username and password don't match!");
-        }
+        //console.log(xhr.getResponseHeader('Set-Cookie'));
+        // if (data) {
+        //      window.location.href="http://localhost:8080/dashboard.html"
+        // }else {
+        //     alert("Username and password don't match!");
+        // }
     },
     error: function (errormessage) {
         console.log(errormessage);
     }
+
 });
 });
