@@ -18,11 +18,13 @@ func AddRoutes(router *mux.Router) {
 		{"/student", PostStudent, "POST"},
 		{"/student/all", ListAllStudent, "GET"},
 		{"/course/all", Health, "OPTIONS"},
-		
+		{"/student/auth", Authenticate, "POST"},
+
 		{"/course", Health, "OPTIONS"},
 		{"/course", Health, "OPTIONS"},
 		{"/student", Health, "OPTIONS"},
 		{"/student/all", Health, "OPTIONS"},
+		{"/student/auth", Health, "OPTIONS"},
 	}
 
 	for _, route := range Routes {

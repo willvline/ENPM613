@@ -77,6 +77,19 @@ func GetStudentByName(student Student) ([]Student, error) {
 	return students, err
 }
 
+func Authenticate(student Student) (bool) {
+	foundStudent, err := GetStudent(student)
+	if err != nil {
+		return false;
+	}
+	for _, stu := range foundStudent {
+		if stu.PassWord != student.PassWord {
+			return false;
+		}
+	}
+	return true;
+}
+
 // PatchStudent update the whole student structure
 func PatchStudent(student Student) error {
 

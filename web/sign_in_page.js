@@ -16,16 +16,21 @@ $('.form-signin').submit(function(e){
   var password = $('#inputPassword').val();
   var url = $(this).attr('action');
   $.ajax({
-    type: "GET",
-    url: url + "?user_name="+email,
-    data: JSON.stringify({user_name: email, pass_word: password}),
+    type: "POST",
+    url: url+"/auth",
+    data: JSON.stringify({
+        user_name:      email,
+        email:          email,
+        pass_word:      password
+    }),
     contentType: "application/json; charset=utf-8", // this
     dataType: "json", // and this
     success: function (data) {
         console.log(data);
-        if (data.length >= 1) {
-            console.log(data.length);
-            window.location.href="http://localhost:8080/dashboard.html"
+        if (data) {
+             window.location.href="http://localhost:8080/dashboard.html"
+        }else {
+            alert("Username and password don't match!");
         }
     },
     error: function (errormessage) {
