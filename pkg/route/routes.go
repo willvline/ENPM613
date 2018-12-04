@@ -19,6 +19,8 @@ type Route struct {
 func AddRoutes(router *mux.Router) {
 	Routes := []Route{
 		{"/student", auth(apiserver.GetStudent), "GET"},
+		{"/student", auth(apiserver.PatchStudent), "PATCH"},
+		//{"/student", auth(apiserver.RegisterCourse), "PATCH"},
 		{"/student", auth(apiserver.PostStudent), "POST"},
 		{"/student/all", auth(apiserver.ListAllStudent), "GET"},
 		{"/course/all", auth(apiserver.Health), "OPTIONS"},
@@ -57,7 +59,7 @@ func auth(f func(w http.ResponseWriter, r *http.Request)) func(w http.ResponseWr
 			w.Header().Set("Content-Type", "application/json")
 			w.Header().Set("Access-Control-Allow-Origin", "http://localhost:8080")
 			w.Header().Set("Access-Control-Allow-Credentials", "true")
-			w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
+			w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, PATCH")
 			w.Header().Set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization")
 			w.WriteHeader(code)
 			w.Write(response)

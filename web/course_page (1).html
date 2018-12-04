@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="course_page.css">
+	<!-- <script
+  	src="https://code.jquery.com/jquery-3.3.1.min.js"
+  	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  	crossorigin="anonymous"></script> -->
+	  <script
+	  src="https://code.jquery.com/jquery-3.3.1.js"
+	  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+	  crossorigin="anonymous"></script>
+	<title>course_page</title>
+</head>
+<body>
+	<div id = 'sidebar'></div>
+	<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+			<div>
+				<h2 class = "text-info"><em><u>Course Page</u></em></h2>
+			</div>
+			<div class = "mt-5">
+					
+					<ul class="nav nav-tabs">
+						<li class="nav-item">
+							<a id='intro' class="nav-link active" href="#">Introduction</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" id="lecture" href="#">Lecture</a>
+						</li>
+						<li class="nav-item">
+							<a id="assignment" class="nav-link" href="#">Assignment</a>
+						</li>
+						<li class="nav-item">
+							<a id='grade' class="nav-link" href="#">Grades</a>
+						</li>
+					</ul>
+				</div>
+			<div class = "container position-relative">
+				
+				<div id = "screen">
+					<h5>Welcome to HTML course</h5>
+					<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+						Fuga, alias eaque dolorem blanditiis aut voluptate consequuntur quasi rem iusto, repellat molestiae nemo accusamus magnam voluptates ut ipsam labore quibusdam dignissimos deleniti sequi veritatis quis maxime! Repellendus, eos consequuntur consequatur unde quibusdam nesciunt debitis aliquid modi consectetur necessitatibus dolores officiis? Enim!</p>
+
+				</div>
+			</div>       
+	  </main>
+
+	  <script>
+		  document.getElementById("lecture").addEventListener('click', lecture);
+		  document.getElementById('intro').addEventListener('click', intro);
+		  document.getElementById("assignment").addEventListener('click', assi);
+		  document.getElementById('grade').addEventListener('click', gd);
+
+		  function lecture(){
+			  var xhr = new XMLHttpRequest();
+			  xhr.open('get', 'lecture_page.html', true);
+
+			  xhr.onload = function(){
+				  if(this.status == 200){
+					  document.getElementById('screen').innerHTML = this.responseText;
+				  }
+			  }
+			
+			  xhr.send();
+		  }
+	 
+		  function intro(){
+			var xhr = new XMLHttpRequest();
+			xhr.open('get', 'lecture_page.html', true);
+			var output = '<h5>'+'Welcome to HTML course'+'</h5>'+
+					'<p>'+'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga, alias eaque dolorem blanditiis aut voluptate consequuntur quasi rem iusto, repellat molestiae nemo accusamus magnam voluptates ut ipsam labore quibusdam dignissimos deleniti sequi veritatis quis maxime! Repellendus, eos consequuntur consequatur unde quibusdam nesciunt debitis aliquid modi consectetur necessitatibus dolores officiis? Enim!'+'</p>'
+			  xhr.onload = function(){
+				  if(this.status == 200){
+					  document.getElementById('screen').innerHTML = output;
+				  }
+			  }
+			
+			  xhr.send();
+		  }
+
+		   function assi(){
+			  var xhr = new XMLHttpRequest();
+			  xhr.open('get', 'assignment_submission.html', true);
+
+			  xhr.onload = function(){
+				  if(this.status == 200){
+					  document.getElementById('screen').innerHTML = this.responseText;
+				  }
+			  }
+			
+			  xhr.send();
+		  }
+
+		   function gd(){
+			  var xhr = new XMLHttpRequest();
+			  xhr.open('get', 'assignment.html', true);
+
+			  xhr.onload = function(){
+				  if(this.status == 200){
+					  document.getElementById('screen').innerHTML = this.responseText;
+				  }
+			  }
+			
+			  xhr.send();
+		  }
+	 
+	 
+	 </script>
+<!-- Bootstrap core JavaScript
+    	================================================== -->
+    	<!-- Placed at the end of the document so the pages load faster -->
+    	<script type="text/javascript" src="course_page.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>

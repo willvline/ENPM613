@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="dashboard.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+        crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    
+    <h2 class="text-danger mb-4">
+        <em>
+            <u>
+                Grades
+            </u>
+        </em>
+    </h2>
+
+    <strong class = "mb-3">Arrange By Date:</strong>
+    <select name="arrange" class = "mb-3" onchange="sortTable(this)">
+        <option value="11">old to new</option>
+        <option value="12">new to old</option>
+    </select>
+
+    <br></br>
+
+    <table id="myTable" class="table table-hover">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                </th>
+                <th>
+                    Date
+                </th>
+                <th>
+                </th>
+                <th>
+                    Score
+                </th>
+                <th></th>
+                <th>
+                    Out of
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <a href="">Prerequisite Knowledge Quiz</a>
+                </td>
+                <td>
+                </td>
+                <td>
+                    <span>01/04/2018</span>
+                </td>
+                <td>
+                </td>
+                <td>
+                    —
+                </td>
+                <td></td>
+                <td>
+                    20
+                </td>
+            </tr>
+            <tr class="">
+                <td>
+                    <a href="">Software Engineering Ethics Quiz</a>
+                </td>
+                <td>
+
+                </td>
+                <td>
+                    <span>01/14/2018</span>
+                </td>
+                <td>
+                </td>
+                <td>
+                    —
+                </td>
+                <td></td>
+                <td>
+                    20
+                </td>
+            </tr>
+            <tr class="error">
+                <td>
+                    <a href="">Syllabus Quiz</a>
+                </td>
+                <td>
+                </td>
+                <td>
+                    <span>02/04/2018</span>
+                </td>
+                <td>
+                </td>
+                <td>
+                    —
+                </td>
+                <td></td>
+                <td>
+                    20
+                </td>
+            </tr>
+            <tr class="warning">
+                <td>
+                    <a href="">Software Design and Development Project Team Formation</a>
+                </td>
+                <td>
+                </td>
+                <td>
+                    <span>02/14/2018</span>
+                </td>
+                <td>
+                </td>
+                <td>
+                    —
+                </td>
+                <td></td>
+                <td>
+                    20
+                </td>
+            </tr>
+            <tr class="info">
+                <td>
+                    <a href="">Use Case Assignment</a>
+                </td>
+                <td>
+                </td>
+                <td>
+                    <span>03/04/2018</span>
+                </td>
+                <td>
+                </td>
+                <td>
+                    —
+                </td>
+                <td></td>
+                <td>
+                    20
+                </td>
+            </tr>
+            <tr class="info">
+                <td>
+                    <a href="">Project Plan</a>
+                </td>
+                <td>
+                </td>
+                <td>
+                    <span>03/14/2018</span>
+                </td>
+                <td>
+                </td>
+                <td>
+                    —
+                </td>
+                <td></td>
+                <td>
+                    20
+                </td>
+            </tr>
+            <tr class="info">
+                <td>
+                    <a href="">Requirements Analysis</a>
+                </td>
+                <td>
+                </td>
+                <td>
+                    <span>04/04/2018</span>
+                </td>
+                <td>
+                </td>
+                <td>
+                    —
+                </td>
+                <td></td>
+                <td>
+                    20
+                </td>
+            </tr>
+            <tr class="info">
+                <td>
+                    <a href="">User Centered Design Quiz</a>
+                </td>
+                <td>
+                </td>
+                <td>
+                    <span>04/14/2018</span>
+                </td>
+                <td>
+                </td>
+                <td>
+                    —
+                </td>
+                <td></td>
+                <td>
+                    20
+                </td>
+            </tr>
+            <tr class="info">
+                <td>
+                    <a href="">User Interaction Models and Prototype</a>
+                </td>
+                <td>
+                </td>
+                <td>
+                    <span>05/04/2018</span>
+                </td>
+                <td>
+                </td>
+                <td>
+                    —
+                </td>
+                <td></td>
+                <td>
+                    20
+                </td>
+            </tr>
+            <tr class="info">
+                <td>
+                    <a href="">Preliminary Architecture Decisions</a>
+                </td>
+                <td>
+                </td>
+                <td>
+                    <span>05/14/2018</span>
+                </td>
+                <td>
+                </td>
+                <td>
+                    —
+                </td>
+                <td></td>
+                <td>
+                    20
+                </td>
+            </tr>
+            <tr class="info">
+                <td>
+                    <a href="">Architecture Styles and Tactics</a>
+                </td>
+                <td>
+                </td>
+                <td>
+                    <span>06/04/2018</span>
+                </td>
+                <td>
+                </td>
+                <td>
+                    —
+                </td>
+                <td></td>
+                <td>
+                    20
+                </td>
+            </tr>
+            <tr class="info">
+                <td>
+                    <a href="">Architecture Design Quiz</a>
+                </td>
+                <td>
+                </td>
+                <td>
+                    <span>06/14/2018</span>
+                </td>
+                <td>
+                </td>
+                <td>
+                    —
+                </td>
+                <td></td>
+                <td>
+                    20
+                </td>
+            </tr>
+            <tr class="info">
+                <td>
+                    <a href="">Research Projects</a>
+                </td>
+                <td>
+                </td>
+                <td>
+                    <span>07/04/2018</span>
+                </td>
+                <td>
+                </td>
+                <td>
+                    —
+                </td>
+                <td></td>
+                <td>
+                    20
+                </td>
+            </tr>
+            <tr class="info">
+                <td>
+                    <a href="">SAD</a>
+                </td>
+                <td>
+
+                </td>
+                <td>
+                    <span>07/14/2018</span>
+                </td>
+                <td>
+                </td>
+                <td>
+                    —
+                </td>
+                <td></td>
+                <td>
+                    20
+                </td>
+            </tr>
+            <tr class="info">
+                <td>
+                    <a href="">Architecture Final Quiz</a>
+                </td>
+                <td>
+
+                </td>
+                <td>
+                    <span>08/04/2018</span>
+                </td>
+                <td>
+                </td>
+                <td>
+                    —
+                </td>
+                <td></td>
+                <td>
+                    20
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class = "d-flex flex-row-reverse justify-content-center mt-2 mb-5">
+        <a href="#" class = "btn btn-success mt-3">Back to top</a>
+    </div>
+    
+    <script>
+        function sortTable(thisobj) {
+
+            var table, rows, switching, i, x, y, shouldSwitch;
+            table = document.getElementById("myTable");
+            switching = true;
+            /* Make a loop that will continue until
+            no switching has been done: */
+            while (switching) {
+                // Start by saying: no switching is done:
+                switching = false;
+                rows = table.rows;
+                /* Loop through all table rows (except the
+                first, which contains table headers): */
+                for (i = 1; i < (rows.length - 1); i++) {
+                    // Start by saying there should be no switching:
+                    shouldSwitch = false;
+                    /* Get the two elements you want to compare,
+                    one from current row and one from the next: */
+                    x = rows[i].getElementsByTagName("span")[0];
+                    y = rows[i + 1].getElementsByTagName("span")[0];
+                    // Check if the two rows should switch place:
+                    if (thisobj.value == 11) {
+                        if (new Date(x.innerHTML) > new Date(y.innerHTML)) {
+                            shouldSwitch = true;
+                            break;
+                        }
+                    } else {
+                        if (new Date(x.innerHTML) <= new Date(y.innerHTML)) {
+                            shouldSwitch = true;
+                            break;
+                        }
+                    }
+                }
+                if (shouldSwitch) {
+                    /* If a switch has been marked, make the switch
+                    and mark that a switch has been done: */
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

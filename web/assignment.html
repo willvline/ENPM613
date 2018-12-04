@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="dashboard.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+        crossorigin="anonymous">
+    <title>Assignment</title>
+    <style>
+        #assignment_box{
+            width: 800px;
+            margin-right: 0;
+        }
+
+        /* iframe {
+            display: inline-block;
+            margin-left: 0px;
+            width: 1200px;
+            height: 560px;
+
+        }
+
+        #a {
+            display: inline;
+            margin-left: 10px;
+            color: rgb(2, 25, 126);
+            font-size: 30px;
+        }
+
+        #b {
+            display: inline;
+            margin-left: 1000px;
+            color: rgb(2, 25, 126);
+            font-size: 30px;
+        } */
+    </style>
+
+
+
+
+</head>
+
+<body>
+    
+    
+    <div id = "assignment_box">
+            <h2 class="text-info"><em><u>
+                    Assignment
+            </u></em></h2>
+    
+    
+            <form action="http://localhost:8080" method="POST">
+                <table cellpadding="10px" cellspacing="0px" class = "border border-warning">
+        
+                    <input type="hidden" name="id" value="9527" />
+                    <tr style="font-family:Arial, Helvetica, sans-serif">
+                        <td>
+                            <b style="display:block; font-size:20px">Description: </b>
+                            HTML Formatting Elements
+                            In the previous chapter, you learned about the HTML style attribute.
+        
+                            HTML also defines special elements for defining text with a special meaning.
+        
+                            HTML uses elements like &lt;b&gt; and &lt;i&gt; for formatting output, like bold or italic text.
+        
+                            Formatting elements were designed to display special types of text:
+        
+                            &lt;b&gt; - Bold text
+                            &lt;strong&gt; - Important text
+                            &lt;i&gt; - Italic text
+                            &lt;em&gt; - Emphasized text
+                            &lt;mark&gt; - Marked text
+                            &lt;small&gt; - Small text
+                            &lt;del&gt; - Deleted text
+                            &lt;ins&gt; - Inserted text
+                            &lt;sub&gt; - Subscript text
+                            &lt;sup&gt; - Superscript text
+                        </td>
+        
+                    </tr>
+        
+                    <tr>
+        
+                        <td>
+                            <textarea id="desc" style="margin-left: 50px;" class="bg-light" rows="15" cols="145" name="desc" placeholder="Type in your answer here"></textarea>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td>
+                            <input class="btn btn-primary btn-large" type="submit" style="font-size: 25px;" value="Submit" />
+                        </td>
+                    </tr>
+                </table>
+            </form>
+
+    </div>
+
+        
+
+    <!-- Bootstrap core JavaScript
+    	================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

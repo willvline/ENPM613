@@ -71,10 +71,10 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	}
 	// Validate the account against Database
 	valid := mongo.Authenticate(student)
-
+	log.Println(valid)
 	if valid {
-		log.Println(student)
 		students, err := mongo.GetStudent(student)
+		//log.Println("login: ", students)
 		student = students[0]
 		claims := JWTData{
 			StandardClaims: jwt.StandardClaims{
@@ -89,6 +89,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 
 		token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 		tokenString, err := token.SignedString([]byte(SECRET))
+
 		TokenPool[tokenString] = true
 		if err != nil {
 			log.Println(err)
@@ -109,7 +110,6 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		}
 
 		w.Header().Add("Set-Cookie", tokenString)
-
 		respondWithJSON(w, r, http.StatusOK, jsondata)
 	} else {
 		http.Error(w, "Login failed!", http.StatusUnauthorized)
@@ -199,7 +199,7 @@ func respondWithJSON(w http.ResponseWriter, r *http.Request, code int, payload i
 	w.Header().Set("Content-Type", "application/json")
 	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:8080")
 	w.Header().Set("Access-Control-Allow-Credentials", "true")
-	w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
+	w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, PATCH")
 	w.Header().Set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization")
 
 	w.WriteHeader(code)

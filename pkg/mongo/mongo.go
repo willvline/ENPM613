@@ -79,7 +79,7 @@ func GetStudentByName(student Student) ([]Student, error) {
 
 func Authenticate(student Student) bool {
 	foundStudent, err := GetStudent(student)
-	if err != nil {
+	if err != nil || len(foundStudent) == 0 {
 		return false
 	}
 	for _, stu := range foundStudent {

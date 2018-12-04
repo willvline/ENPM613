@@ -50,6 +50,7 @@ func Authenticate(w http.ResponseWriter, r *http.Request) {
 
 }
 func GetStudent(w http.ResponseWriter, r *http.Request) {
+
 	log.Println("someone is using GetStudent")
 	students, err := getStudent(r)
 	if err != nil {
@@ -70,28 +71,52 @@ func ListAllStudent(w http.ResponseWriter, r *http.Request) {
 }
 
 func getStudent(r *http.Request) ([]mongo.Student, error) {
-	student := mongo.Student{}
-	studentid := r.FormValue("student_id")
-	username := r.FormValue("user_name")
-	if studentid != "" {
-		student.StudentID = bson.ObjectIdHex(studentid)
-	}
-	if username != "" {
-		student.UserName = username
-	}
+
+	student, err := getStudentFromToken(r)
 	students, err := mongo.GetStudent(student)
 	return students, err
 }
 
 func PatchStudent(w http.ResponseWriter, r *http.Request) {
 
+	log.Println("someone is using PatchStudent")
 	defer r.Body.Close()
-	var student mongo.Student
-	if err := json.NewDecoder(r.Body).Decode(&student); err != nil {
+
+	tokenStudent, _ := getStudentFromToken(r)
+
+	userData, err := parseBody(r)
+	log.Println("userData: ", userData)
+	if err != nil {
 		respondWithError(w, r, http.StatusBadRequest, "Invalid request payload")
 		return
 	}
-	if err := mongo.PatchStudent(student); err != nil {
+
+	if username, ok := userData["user_name"].(string); ok {
+		tokenStudent.UserName = username
+	}
+	if password, ok := userData["pass_word"].(string); ok && password != "" {
+		tokenStudent.PassWord = password
+	}
+	if email, ok := userData["email"].(string); ok {
+		tokenStudent.Email = email
+	}
+	if grades, ok := userData["grades"].(map[string]string); ok {
+		tokenStudent.Grades = grades
+	}
+	if courserecords, ok := userData["course_records"].(map[string]map[string]bool); ok {
+		tokenStudent.CourseRecords = courserecords
+	}
+
+	if lastname, ok := userData["last_name"].(string); ok {
+		tokenStudent.LastName = lastname
+	}
+	if firstname, ok := userData["first_name"].(string); ok {
+		tokenStudent.FirstName = firstname
+	}
+
+	log.Println("after merge:", tokenStudent)
+
+	if err := mongo.PatchStudent(tokenStudent); err != nil {
 		respondWithError(w, r, http.StatusInternalServerError, err.Error())
 		return
 	}
@@ -126,7 +151,7 @@ func respondWithJSON(w http.ResponseWriter, r *http.Request, code int, payload i
 	w.Header().Set("Content-Type", "application/json")
 	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:8080")
 	w.Header().Set("Access-Control-Allow-Credentials", "true")
-	w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
+	w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, PATCH")
 	w.Header().Set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization")
 
 	w.WriteHeader(code)

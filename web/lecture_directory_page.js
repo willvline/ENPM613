@@ -15,14 +15,12 @@ $('.form-signup').submit(function(e){
     var url = $(this).attr('action');
     $.ajax({
         type: "POST",
-        url: "http://localhost:8000/signup",
+        url: "http:localhost:8000/signup",
         data: JSON.stringify({
-            user_name:    userName,  
+            user_name:    email, 
             email:        email,
-            pass_word:    password,
-            first_name:   firstName,
-            last_name:    lastName,
-        }), 
+            pass_word:    password
+        }),
         contentType: "application/json; charset=utf-8", // this
         dataType: "json", // and this
         success: function (data) {

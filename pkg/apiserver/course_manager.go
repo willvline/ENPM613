@@ -67,7 +67,7 @@ func RegisterCourse(w http.ResponseWriter, r *http.Request) {
 		respondWithError(w, r, http.StatusBadRequest, "Invalid payload")
 		return
 	}
-	student.CourseRecords[bodyData["course_name"]] = map[string]bool{}
+	student.CourseRecords[bodyData["course_name"].(string)] = map[string]bool{}
 
 	if err := mongo.PatchStudent(student); err != nil {
 		respondWithError(w, r, http.StatusInternalServerError, err.Error())
@@ -266,10 +266,11 @@ func getStudentFromToken(r *http.Request) (mongo.Student, error) {
 	data := claims.Claims.(*authserver.JWTData)
 	student.UserName = data.CustomClaims["user_name"]
 	student.StudentID = bson.ObjectIdHex(data.CustomClaims["student_id"])
+
 	return student, nil
 }
-func parseBody(r *http.Request) (map[string]string, error) {
-	userData := map[string]string{}
+func parseBody(r *http.Request) (map[string]interface{}, error) {
+	userData := map[string]interface{}{}
 	body, err := ioutil.ReadAll(r.Body)
 	if err != nil {
 		return userData, err
