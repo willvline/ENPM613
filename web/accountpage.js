@@ -12,6 +12,7 @@ $('#update').on('click', function() {
         crossDomain: true,
         data: JSON.stringify({
             user_name:      user_name,
+            pass_word:      pass_word,
             email:          email,
             first_name:     firstName,
             last_name:      lastName,

@@ -83,6 +83,13 @@ func PatchStudent(w http.ResponseWriter, r *http.Request) {
 	defer r.Body.Close()
 
 	tokenStudent, _ := getStudentFromToken(r)
+	students, err := mongo.GetStudent(tokenStudent)
+	if err != nil || len(students) < 1 {
+		respondWithError(w, r, http.StatusBadRequest, "cann't find student")
+		return
+	}
+
+	tokenStudent = students[0]
 
 	userData, err := parseBody(r)
 	log.Println("userData: ", userData)
@@ -95,6 +102,7 @@ func PatchStudent(w http.ResponseWriter, r *http.Request) {
 		tokenStudent.UserName = username
 	}
 	if password, ok := userData["pass_word"].(string); ok && password != "" {
+		log.Println(password)
 		tokenStudent.PassWord = password
 	}
 	if email, ok := userData["email"].(string); ok {
