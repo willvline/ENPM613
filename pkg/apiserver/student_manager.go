@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
-	"time"
 
 	mongo "github.com/ENPM613/HOLMS/pkg/mongo"
 	"gopkg.in/mgo.v2/bson"
@@ -42,11 +41,6 @@ func Authenticate(w http.ResponseWriter, r *http.Request) {
 	}
 	valid := mongo.Authenticate(student)
 
-	expiration := time.Now().Add(365 * 24 * time.Hour)
-	cookie := http.Cookie{Name: student.UserName, Value: student.StudentID.Hex(), Expires: expiration}
-	http.SetCookie(w, &cookie)
-
-	w.Header().Add("Set-Cookie", student.UserName)
 	if !valid {
 		respondWithError(w, r, http.StatusBadRequest, "Username and password don't match!")
 	} else {
@@ -132,12 +126,7 @@ func respondWithJSON(w http.ResponseWriter, r *http.Request, code int, payload i
 	if err != nil {
 		log.Println(err)
 	}
-	// if origin := r.Header.Get("Origin"); origin != "" {
-	// 	w.Header().Set("Access-Control-Allow-Origin", origin)
-	// 	w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
-	// 	w.Header().Set("Access-Control-Allow-Headers",
-	// 		"Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization")
-	// }
+
 	w.Header().Set("Content-Type", "application/json")
 	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:8080")
 	w.Header().Set("Access-Control-Allow-Credentials", "true")

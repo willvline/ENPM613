@@ -2,10 +2,15 @@ package apiserver
 
 import (
 	"encoding/json"
+	"errors"
+	"io/ioutil"
+	"log"
 	"net/http"
 	"time"
 
+	"github.com/ENPM613/HOLMS/pkg/authserver"
 	mongo "github.com/ENPM613/HOLMS/pkg/mongo"
+	jwt "github.com/dgrijalva/jwt-go"
 	"github.com/gorilla/mux"
 	"gopkg.in/mgo.v2/bson"
 )
@@ -47,15 +52,17 @@ func getCourse(r *http.Request) ([]mongo.Course, error) {
 
 func RegisterCourse(w http.ResponseWriter, r *http.Request) {
 
-	students, err := getStudent(r)
+	student, err := getStudentFromToken(r)
 	if err != nil {
 		respondWithError(w, r, http.StatusBadRequest, "Invalid student ID")
 		return
 	}
-	student := students[0]
-
-	params := mux.Vars(r)
-	student.CourseRecords[params["course_id"]] = map[string]bool{}
+	bodyData, err := parseBody(r)
+	if _, ok := bodyData["course_name"]; !ok || err != nil {
+		respondWithError(w, r, http.StatusBadRequest, "Invalid payload")
+		return
+	}
+	student.CourseRecords[bodyData["course_name"]] = map[string]bool{}
 
 	if err := mongo.PatchStudent(student); err != nil {
 		respondWithError(w, r, http.StatusInternalServerError, err.Error())
@@ -233,4 +240,35 @@ func PatchCourseComment(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	respondWithJSON(w, r, http.StatusOK, map[string]string{"result": "success"})
+}
+
+func getStudentFromToken(r *http.Request) (mongo.Student, error) {
+	authToken := r.Header.Get("Cookie")
+	jwtToken := authToken
+
+	claims, err := jwt.ParseWithClaims(jwtToken, &authserver.JWTData{}, func(token *jwt.Token) (interface{}, error) {
+		if jwt.SigningMethodHS256 != token.Method {
+			return nil, errors.New("Invalid signing algorithm")
+		}
+		return []byte(authserver.SECRET), nil
+	})
+
+	student := mongo.Student{}
+	if err != nil {
+		log.Println(err)
+		return student, err
+	}
+	data := claims.Claims.(*authserver.JWTData)
+	student.UserName = data.CustomClaims["user_name"]
+	student.StudentID = bson.ObjectIdHex(data.CustomClaims["student_id"])
+	return student, nil
+}
+func parseBody(r *http.Request) (map[string]string, error) {
+	userData := map[string]string{}
+	body, err := ioutil.ReadAll(r.Body)
+	if err != nil {
+		return userData, err
+	}
+	json.Unmarshal(body, &userData)
+	return userData, nil
 }
