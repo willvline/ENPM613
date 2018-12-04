@@ -73,6 +73,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	valid := mongo.Authenticate(student)
 
 	if valid {
+		log.Println(student)
 		students, err := mongo.GetStudent(student)
 		student = students[0]
 		claims := JWTData{

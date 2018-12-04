@@ -15,7 +15,7 @@ $('.form-signup').submit(function(e){
     var url = $(this).attr('action');
     $.ajax({
         type: "POST",
-        url: "http:localhost:8000/signup",
+        url: "http://localhost:8000/signup",
         data: JSON.stringify({
             user_name:    email, 
             email:        email,

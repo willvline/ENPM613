@@ -16,7 +16,7 @@ $('.form-signin').submit(function(e){
   var password = $('#inputPassword').val();
   var url = $(this).attr('action');
   $.ajax({
-    type: "GET",
+    type: "POST",
     url:   "http://localhost:8000/login",
     xhrFields: { withCredentials: true },
     crossDomain: true,
