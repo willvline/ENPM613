@@ -24,13 +24,13 @@ type Admin struct {
 }
 
 type Course struct {
-	CourseID        bson.ObjectId     `bson:"_id" json:"course_id"`
-	CourseName      string            `bson:"course_name" json:"course_name"`
-	Syllabus        string            `bson:"syllabus" json:"syllabus"`
-	StudyLevel      string            `bson:"study_level" json:"study_level"`
-	ChapterURL      map[string]string `bson:"chapter_url" json:"chapter_url"`
-	Quiz            []Question        `bson:"quiz" json:"quiz"`
-	DiscussionBoard []Comment         `bson:"discussion_board" json:"discussion_board"`
+	CourseID   bson.ObjectId     `bson:"_id" json:"course_id"`
+	CourseName string            `bson:"course_name" json:"course_name"`
+	Syllabus   string            `bson:"syllabus" json:"syllabus"`
+	StudyLevel string            `bson:"study_level" json:"study_level"`
+	ChapterURL map[string]string `bson:"chapter_url" json:"chapter_url"`
+	Quiz       []Question        `bson:"quiz" json:"quiz"`
+	//DiscussionBoard []Comment         `bson:"discussion_board" json:"discussion_board"`
 }
 
 type Question struct {
@@ -40,7 +40,8 @@ type Question struct {
 }
 
 type Comment struct {
-	PosterName string `bson:"poster_name"   json:"poster_name"`
-	PostDate   string `bson:"post_date"     json:"post_date"`
-	Content    string `bson:"content"       json:"content"`
+	CommentID  bson.ObjectId `bson:"_id"           json:"comment_id"`
+	PosterName string        `bson:"poster_name"   json:"poster_name"`
+	PostDate   string        `bson:"post_date"     json:"post_date"`
+	Content    string        `bson:"content"       json:"content"`
 }

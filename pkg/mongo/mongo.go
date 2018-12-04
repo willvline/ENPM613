@@ -19,6 +19,7 @@ const (
 	STUDENTCOLLECTION = "student"
 	COURSECOLLECTION  = "course"
 	ADMINCOLLECTION   = "admin"
+	COMMENTCOLLECTION = "comment"
 )
 
 // Establish a connection to database
@@ -177,4 +178,34 @@ func PatchAdmin(admin Admin) error {
 func DeleteAdmin(admin Admin) error {
 	err := db.C(ADMINCOLLECTION).RemoveId(admin.AdminID)
 	return err
+}
+
+// AddStudent create a new student in mongo
+func PostComment(comment Comment) ([]Comment, error) {
+
+	err := db.C(COMMENTCOLLECTION).Insert(comment)
+	if err != nil {
+		log.Println(err)
+	}
+
+	comments, err := GetComment(comment)
+	return comments, err
+}
+
+// GetStudent search student in mongo
+func GetComment(comment Comment) ([]Comment, error) {
+	comments := []Comment{}
+
+	if !comment.CommentID.Valid() {
+		return comments, nil
+	}
+
+	err := db.C(COMMENTCOLLECTION).FindId(comment.CommentID).All(&comments)
+	return comments, err
+}
+
+func ListAllComment() ([]Comment, error) {
+	comments := []Comment{}
+	err := db.C(COMMENTCOLLECTION).Find(bson.M{}).All(&comments)
+	return comments, err
 }

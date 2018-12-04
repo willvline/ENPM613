@@ -11,7 +11,7 @@
         <div>
             <h2 class="text-info"><em><u>Lectures</u></em></h2>
         </div>
-
+        <form class = "form-course-selection" action = 'https://localhost:8080/student'>
         <table id="myTable" class="table table-hover">
             <thead>
                 <tr>
@@ -40,7 +40,7 @@
             <tbody>
                 <tr>
                     <td>
-                        <input id="htmlesay" type="checkbox" name="9" value="A" />
+                        <input id="htmleasy" type="checkbox" name="9" value="A" />
                     </td>
                     <td>
                         <a href="../folder/lecturepage.html">HTML</a>
@@ -64,7 +64,7 @@
                 </tr>
                 <tr class="success">
                     <td>
-                        <input id="jsesay" type="checkbox" name="9" value="A" />
+                        <input id="jseasy" type="checkbox" name="9" value="A" />
                     </td>
                     <td>
                         <a href="../folder/lecturepage.html">JavaScript</a>
@@ -88,7 +88,7 @@
                 </tr>
                 <tr class="error">
                     <td>
-                        <input type="checkbox" name="9" value="A" />
+                        <input id="csseasy" type="checkbox" name="9" value="A" />
                     </td>
                     <td>
                         <a href="../folder/lecturepage.html">Cascading Style Sheet</a>
@@ -110,7 +110,7 @@
                 </tr>
                 <tr class="warning">
                     <td>
-                        <input type="checkbox" name="9" value="A" />
+                        <input id="htmlmedium" type="checkbox" name="9" value="A" />
                     </td>
                     <td>
                         <a href="../folder/lecturepage.html">HTML</a>
@@ -133,7 +133,7 @@
                 </tr>
                 <tr class="info">
                     <td>
-                        <input type="checkbox" name="9" value="A" />
+                        <input id="jsmedium" type="checkbox" name="9" value="A" />
                     </td>
                     <td>
                         <a href="../folder/lecturepage.html">JavaScript</a>
@@ -156,7 +156,7 @@
                 </tr>
                 <tr class="info">
                     <td>
-                        <input type="checkbox" name="9" value="A" />
+                        <input id="cssmedium" type="checkbox" name="9" value="A" />
                     </td>
                     <td>
                         <a href="../folder/lecturepage.html">Cascading Style Sheet</a>
@@ -179,7 +179,7 @@
                 </tr>
                 <tr class="info">
                     <td>
-                        <input type="checkbox" name="9" value="A" />
+                        <input id="htmldifficult" type="checkbox" name="9" value="A" />
                     </td>
                     <td>
                         <a href="../folder/lecturepage.html">HTML</a>
@@ -201,7 +201,7 @@
                 </tr>
                 <tr class="info">
                     <td>
-                        <input type="checkbox" name="9" value="A" />
+                        <input id="jsdifficult" type="checkbox" name="9" value="A" />
                     </td>
                     <td>
                         <a href="../folder/lecturepage.html">JavaScript</a>
@@ -224,7 +224,7 @@
                 </tr>
                 <tr class="info">
                     <td>
-                        <input type="checkbox" name="9" value="A" />
+                        <input id="cssdifficult" type="checkbox" name="9" value="A" />
                     </td>
                     <td>
                         <a href="../folder/lecturepage.html">Cascading Style Sheet</a>
@@ -248,13 +248,14 @@
 
             </tbody>
         </table>
-        <input style="margin-left: 550px"class="btn" id="submit" type="submit" value="提 交" />
-
-
+        <!-- <input style="margin-left: 550px"class="btn" id="submit" type="submit" value="提 交" /> -->
+        <button style="width: 125px; margin-left: 350px" class="btn btn-primary btn-block" type="submit">Submit</button>
+</form>
     </main>
 
     </div>
 
+    <script src="course_selection.js"></script>
     <!-- Bootstrap core JavaScript
     	================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

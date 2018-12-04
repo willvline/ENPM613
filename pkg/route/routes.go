@@ -26,7 +26,10 @@ func AddRoutes(router *mux.Router) {
 		{"/course/all", auth(apiserver.Health), "OPTIONS"},
 		{"/login", authserver.Login, "POST"},
 		{"/signup", apiserver.PostStudent, "POST"},
+
 		{"/account", auth(authserver.Account), "GET"},
+		{"/discussionboard", apiserver.ListAllComment, "GET"},
+		{"/discussionboard", apiserver.PostComment, "POST"},
 
 		{"/course", apiserver.Health, "OPTIONS"},
 		{"/course", apiserver.Health, "OPTIONS"},
@@ -35,6 +38,9 @@ func AddRoutes(router *mux.Router) {
 		{"/login", apiserver.Health, "OPTIONS"},
 		{"/account", apiserver.Health, "OPTIONS"},
 		{"/signup", apiserver.Health, "OPTIONS"},
+
+		{"/discussionboard", apiserver.Health, "OPTIONS"},
+		{"/discussionboard", apiserver.Health, "OPTIONS"},
 	}
 
 	for _, route := range Routes {

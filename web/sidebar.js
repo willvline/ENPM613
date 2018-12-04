@@ -40,4 +40,33 @@ $('#Myaccount').on('click', function() {
 
 $('#DiscussionBoard').on('click', function() {
     $("#screen").load("DiscussionBoard.html");
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8000/discussionboard",
+        // data: JSON.stringify({
+        //     user_name:    email, 
+        //     email:        email,
+        //     pass_word:    password
+        // }),
+        // contentType: "application/json; charset=utf-8", // this
+        dataType: "json", // and this
+        success: function (data) {
+            //window.location.href="http://localhost:8080/sign_in_page.html";
+        },
+        error: function (errormessage) {
+            //alert(errormessage.JSON());
+            console.log(errormessage);
+            alert(errormessage.responseJSON.error);
+            
+            console.log(errormessage);
+    }}).done(function(data){
+        console.log(data);
+        var i;
+        var posts = "";
+        for (i = 0; i < data.length; i++) { 
+            posts = posts + '<strong>'+data[i].poster_name+'</strong>' + '<br><strong>'+data[i].post_date+'</strong>' + '<p><em>'+data[i].content+'</em></p >';
+            // $("#box").append('<strong>'+data[i].poster_name+'</strong>' + '<br><strong>'+data[i].post_date+'</strong>' + '<p><em>'+data[i].content+'</em></p >')
+        }
+        $("#box").html(posts);  
+    });
 });

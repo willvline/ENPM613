@@ -6,7 +6,6 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-	"time"
 
 	"github.com/Johnlovescoding/ENPM613/HOLMS/pkg/authserver"
 	mongo "github.com/Johnlovescoding/ENPM613/HOLMS/pkg/mongo"
@@ -184,68 +183,68 @@ func GetCourseQuiz(w http.ResponseWriter, r *http.Request) {
 	respondWithJSON(w, r, http.StatusOK, quiz)
 }
 
-func GetCourseComment(w http.ResponseWriter, r *http.Request) {
+// func GetCourseComment(w http.ResponseWriter, r *http.Request) {
 
-	courses, err := getCourse(r)
-	if err != nil {
-		respondWithError(w, r, http.StatusBadRequest, "Invalid Course ID")
-		return
-	}
-	var comment []mongo.Comment
-	for _, course := range courses {
-		comment = course.DiscussionBoard
-	}
-	respondWithJSON(w, r, http.StatusOK, comment)
-}
+// 	courses, err := getCourse(r)
+// 	if err != nil {
+// 		respondWithError(w, r, http.StatusBadRequest, "Invalid Course ID")
+// 		return
+// 	}
+// 	var comment []mongo.Comment
+// 	// for _, course := range courses {
+// 	// 	comment = course.DiscussionBoard
+// 	// }
+// 	respondWithJSON(w, r, http.StatusOK, comment)
+// }
 
-func PostCourseComment(w http.ResponseWriter, r *http.Request) {
+// func PostCourseComment(w http.ResponseWriter, r *http.Request) {
 
-	courses, err := getCourse(r)
-	if err != nil {
-		respondWithError(w, r, http.StatusBadRequest, "Invalid Course ID")
-		return
-	}
-	course := courses[0]
+// 	courses, err := getCourse(r)
+// 	if err != nil {
+// 		respondWithError(w, r, http.StatusBadRequest, "Invalid Course ID")
+// 		return
+// 	}
+// 	course := courses[0]
 
-	params := mux.Vars(r)
+// 	params := mux.Vars(r)
 
-	comment := mongo.Comment{
-		params["student_id"],
-		time.Now().String(),
-		params["content"],
-	}
-	course.DiscussionBoard = append(course.DiscussionBoard, comment)
+// 	// comment := mongo.Comment{
+// 	// 	params["student_id"],
+// 	// 	time.Now().String(),
+// 	// 	params["content"],
+// 	// }
+// 	// course.DiscussionBoard = append(course.DiscussionBoard, comment)
 
-	if err := mongo.PatchCourse(course); err != nil {
-		respondWithError(w, r, http.StatusInternalServerError, err.Error())
-		return
-	}
-	respondWithJSON(w, r, http.StatusOK, map[string]string{"result": "success"})
-}
+// 	if err := mongo.PatchCourse(course); err != nil {
+// 		respondWithError(w, r, http.StatusInternalServerError, err.Error())
+// 		return
+// 	}
+// 	respondWithJSON(w, r, http.StatusOK, map[string]string{"result": "success"})
+// }
 
-func PatchCourseComment(w http.ResponseWriter, r *http.Request) {
+// func PatchCourseComment(w http.ResponseWriter, r *http.Request) {
 
-	courses, err := getCourse(r)
-	if err != nil {
-		respondWithError(w, r, http.StatusBadRequest, "Invalid Course ID")
-		return
-	}
-	course := courses[0]
+// 	courses, err := getCourse(r)
+// 	if err != nil {
+// 		respondWithError(w, r, http.StatusBadRequest, "Invalid Course ID")
+// 		return
+// 	}
+// 	course := courses[0]
 
-	params := mux.Vars(r)
+// 	params := mux.Vars(r)
 
-	for _, comment := range course.DiscussionBoard {
-		if comment.PosterName == params["student_id"] && comment.PostDate == params["post_date"] {
-			comment.Content = params["content"]
-		}
-	}
+// 	// for _, comment := range course.DiscussionBoard {
+// 	// 	if comment.PosterName == params["student_id"] && comment.PostDate == params["post_date"] {
+// 	// 		comment.Content = params["content"]
+// 	// 	}
+// 	// }
 
-	if err := mongo.PatchCourse(course); err != nil {
-		respondWithError(w, r, http.StatusInternalServerError, err.Error())
-		return
-	}
-	respondWithJSON(w, r, http.StatusOK, map[string]string{"result": "success"})
-}
+// 	if err := mongo.PatchCourse(course); err != nil {
+// 		respondWithError(w, r, http.StatusInternalServerError, err.Error())
+// 		return
+// 	}
+// 	respondWithJSON(w, r, http.StatusOK, map[string]string{"result": "success"})
+// }
 
 func getStudentFromToken(r *http.Request) (mongo.Student, error) {
 	authToken := r.Header.Get("Cookie")
@@ -277,4 +276,29 @@ func parseBody(r *http.Request) (map[string]interface{}, error) {
 	}
 	json.Unmarshal(body, &userData)
 	return userData, nil
+}
+
+func ListAllComment(w http.ResponseWriter, r *http.Request) {
+
+	comments, err := mongo.ListAllComment()
+	if err != nil {
+		respondWithError(w, r, http.StatusBadRequest, "Cann't list all comments")
+	}
+	respondWithJSON(w, r, http.StatusOK, comments)
+}
+
+func PostComment(w http.ResponseWriter, r *http.Request) {
+
+	defer r.Body.Close()
+	comment := mongo.Comment{}
+	if err := json.NewDecoder(r.Body).Decode(&comment); err != nil {
+		respondWithError(w, r, http.StatusBadRequest, "Invalid request payload")
+		return
+	}
+	comment.CommentID = bson.NewObjectId()
+	comments, err := mongo.PostComment(comment)
+	if err != nil {
+		respondWithError(w, r, http.StatusBadRequest, err.Error())
+	}
+	respondWithJSON(w, r, http.StatusOK, comments)
 }
