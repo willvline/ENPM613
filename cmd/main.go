@@ -4,9 +4,9 @@ import (
 	"log"
 	"net/http"
 
-	apiserver "github.com/ENPM613/HOLMS/pkg/apiserver"
 	config "github.com/ENPM613/HOLMS/pkg/config"
 	mongo "github.com/ENPM613/HOLMS/pkg/mongo"
+	"github.com/ENPM613/HOLMS/pkg/route"
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 )
@@ -27,7 +27,7 @@ func main() {
 
 	router := mux.NewRouter()
 	router.Use(handlers.ProxyHeaders)
-	apiserver.AddRoutes(router)
+	route.AddRoutes(router)
 	err := http.ListenAndServe("localhost:8000", router)
 	if err != nil {
 		log.Println(err)

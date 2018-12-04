@@ -54,9 +54,9 @@ $('.form-signup').submit(function(e){
     var url = $(this).attr('action');
     $.ajax({
         type: "POST",
-        url: url,
+        url: url + "/signup",
         data: JSON.stringify({
-            user_name:    firstName + " " + lastName, 
+            user_name:    email, 
             email:        email,
             pass_word:    password
         }),

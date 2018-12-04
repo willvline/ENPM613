@@ -35,7 +35,6 @@ func PostStudent(w http.ResponseWriter, r *http.Request) {
 
 func Authenticate(w http.ResponseWriter, r *http.Request) {
 
-	log.Println(r.Header)
 	student := mongo.Student{}
 	if err := json.NewDecoder(r.Body).Decode(&student); err != nil {
 		respondWithError(w, r, http.StatusBadRequest, "Invalid request payload")
@@ -44,10 +43,9 @@ func Authenticate(w http.ResponseWriter, r *http.Request) {
 	valid := mongo.Authenticate(student)
 
 	expiration := time.Now().Add(365 * 24 * time.Hour)
-	cookie := http.Cookie{Name: student.UserName, Value: student.StudentID.String(), Expires: expiration}
+	cookie := http.Cookie{Name: student.UserName, Value: student.StudentID.Hex(), Expires: expiration}
 	http.SetCookie(w, &cookie)
-	// log.Println("after setting cookie, w.Header(): ", w.Header())
-	// log.Println(cookie)
+
 	w.Header().Add("Set-Cookie", student.UserName)
 	if !valid {
 		respondWithError(w, r, http.StatusBadRequest, "Username and password don't match!")
