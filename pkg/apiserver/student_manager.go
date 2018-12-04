@@ -5,7 +5,7 @@ import (
 	"log"
 	"net/http"
 
-	mongo "github.com/ENPM613/HOLMS/pkg/mongo"
+	mongo "github.com/Johnlovescoding/ENPM613/HOLMS/pkg/mongo"
 	"gopkg.in/mgo.v2/bson"
 )
 
@@ -73,15 +73,11 @@ func getStudent(r *http.Request) ([]mongo.Student, error) {
 	student := mongo.Student{}
 	studentid := r.FormValue("student_id")
 	username := r.FormValue("user_name")
-	password := r.FormValue("pass_word")
 	if studentid != "" {
 		student.StudentID = bson.ObjectIdHex(studentid)
 	}
 	if username != "" {
 		student.UserName = username
-	}
-	if password != "" {
-		student.PassWord = password
 	}
 	students, err := mongo.GetStudent(student)
 	return students, err

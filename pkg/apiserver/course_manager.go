@@ -8,8 +8,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/ENPM613/HOLMS/pkg/authserver"
-	mongo "github.com/ENPM613/HOLMS/pkg/mongo"
+	"github.com/Johnlovescoding/ENPM613/HOLMS/pkg/authserver"
+	mongo "github.com/Johnlovescoding/ENPM613/HOLMS/pkg/mongo"
 	jwt "github.com/dgrijalva/jwt-go"
 	"github.com/gorilla/mux"
 	"gopkg.in/mgo.v2/bson"
@@ -45,7 +45,12 @@ func getCourse(r *http.Request) ([]mongo.Course, error) {
 
 	params := mux.Vars(r)
 	course := mongo.Course{}
-	course.CourseID = bson.ObjectIdHex(params["course_id"])
+	if id, ok := params["course_id"]; ok {
+		course.CourseID = bson.ObjectIdHex(id)
+	}
+	if name, ok := params["course_name"]; ok {
+		course.CourseName = name
+	}
 	courses, err := mongo.GetCourse(course)
 	return courses, err
 }

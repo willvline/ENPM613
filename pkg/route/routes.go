@@ -5,8 +5,8 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/ENPM613/HOLMS/pkg/apiserver"
-	"github.com/ENPM613/HOLMS/pkg/authserver"
+	"github.com/Johnlovescoding/ENPM613/HOLMS/pkg/apiserver"
+	"github.com/Johnlovescoding/ENPM613/HOLMS/pkg/authserver"
 	"github.com/gorilla/mux"
 )
 

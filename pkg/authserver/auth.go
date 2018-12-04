@@ -11,7 +11,7 @@ import (
 
 	"gopkg.in/mgo.v2/bson"
 
-	"github.com/ENPM613/HOLMS/pkg/mongo"
+	"github.com/Johnlovescoding/ENPM613/HOLMS/pkg/mongo"
 	jwt "github.com/dgrijalva/jwt-go"
 )
 

@@ -16,8 +16,8 @@ $('.form-signin').submit(function(e){
   var password = $('#inputPassword').val();
   var url = $(this).attr('action');
   $.ajax({
-    type: "POST",
-    url: url+"/login",
+    type: "GET",
+    url:   "http://localhost:8000/login",
     xhrFields: { withCredentials: true },
     crossDomain: true,
     data: JSON.stringify({
@@ -29,6 +29,7 @@ $('.form-signin').submit(function(e){
     success: function (data, xhr) {
         console.log(data);
         window.location.href="http://localhost:8080/dashboard.html"
+
     },
     error: function (errormessage) {
         console.log(errormessage);

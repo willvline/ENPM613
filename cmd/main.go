@@ -4,9 +4,9 @@ import (
 	"log"
 	"net/http"
 
-	config "github.com/ENPM613/HOLMS/pkg/config"
-	mongo "github.com/ENPM613/HOLMS/pkg/mongo"
-	"github.com/ENPM613/HOLMS/pkg/route"
+	config "github.com/Johnlovescoding/ENPM613/HOLMS/pkg/config"
+	mongo "github.com/Johnlovescoding/ENPM613/HOLMS/pkg/mongo"
+	"github.com/Johnlovescoding/ENPM613/HOLMS/pkg/route"
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 )
