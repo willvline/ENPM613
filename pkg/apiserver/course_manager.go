@@ -54,26 +54,26 @@ func getCourse(r *http.Request) ([]mongo.Course, error) {
 	return courses, err
 }
 
-func RegisterCourse(w http.ResponseWriter, r *http.Request) {
+// func RegisterCourse(w http.ResponseWriter, r *http.Request) {
 
-	student, err := getStudentFromToken(r)
-	if err != nil {
-		respondWithError(w, r, http.StatusBadRequest, "Invalid student ID")
-		return
-	}
-	bodyData, err := parseBody(r)
-	if _, ok := bodyData["course_name"]; !ok || err != nil {
-		respondWithError(w, r, http.StatusBadRequest, "Invalid payload")
-		return
-	}
-	student.CourseRecords[bodyData["course_name"].(string)] = map[string]bool{}
+// 	student, err := getStudentFromToken(r)
+// 	if err != nil {
+// 		respondWithError(w, r, http.StatusBadRequest, "Invalid student ID")
+// 		return
+// 	}
+// 	bodyData, err := parseBody(r)
+// 	if _, ok := bodyData["course_name"]; !ok || err != nil {
+// 		respondWithError(w, r, http.StatusBadRequest, "Invalid payload")
+// 		return
+// 	}
+// 	student.CourseRecords[bodyData["course_name"].(map[string]strin)] = map[string]string{}
 
-	if err := mongo.PatchStudent(student); err != nil {
-		respondWithError(w, r, http.StatusInternalServerError, err.Error())
-		return
-	}
-	respondWithJSON(w, r, http.StatusOK, map[string]string{"result": "success"})
-}
+// 	if err := mongo.PatchStudent(student); err != nil {
+// 		respondWithError(w, r, http.StatusInternalServerError, err.Error())
+// 		return
+// 	}
+// 	respondWithJSON(w, r, http.StatusOK, map[string]string{"result": "success"})
+// }
 
 func GetCourseSyllabus(w http.ResponseWriter, r *http.Request) {
 
@@ -103,20 +103,20 @@ func GetCourseChapter(w http.ResponseWriter, r *http.Request) {
 	respondWithJSON(w, r, http.StatusOK, chapter)
 }
 
-func GetCourseRecord(w http.ResponseWriter, r *http.Request) {
+// func GetCourseRecord(w http.ResponseWriter, r *http.Request) {
 
-	students, err := getStudent(r)
-	if err != nil {
-		respondWithError(w, r, http.StatusBadRequest, "Invalid student ID")
-		return
-	}
-	params := mux.Vars(r)
-	var courseRecord []map[string]bool
-	for _, student := range students {
-		courseRecord = append(courseRecord, student.CourseRecords[params["course_id"]])
-	}
-	respondWithJSON(w, r, http.StatusOK, courseRecord)
-}
+// 	students, err := getStudent(r)
+// 	if err != nil {
+// 		respondWithError(w, r, http.StatusBadRequest, "Invalid student ID")
+// 		return
+// 	}
+// 	params := mux.Vars(r)
+// 	var courseRecord []map[string]bool
+// 	for _, student := range students {
+// 		courseRecord = append(courseRecord, student.CourseRecords[params["course_id"]])
+// 	}
+// 	respondWithJSON(w, r, http.StatusOK, courseRecord)
+// }
 
 func PatchCourseRecord(w http.ResponseWriter, r *http.Request) {
 	students, err := getStudent(r)
@@ -127,7 +127,7 @@ func PatchCourseRecord(w http.ResponseWriter, r *http.Request) {
 	student := students[0]
 
 	params := mux.Vars(r)
-	student.CourseRecords[params["course_id"]][params["chapter_id"]] = true
+	student.CourseRecords[params["course_id"]][params["chapter_id"]] = "true"
 
 	if err := mongo.PatchStudent(student); err != nil {
 		respondWithError(w, r, http.StatusInternalServerError, err.Error())

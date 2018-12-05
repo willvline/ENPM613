@@ -205,3 +205,14 @@ func respondWithJSON(w http.ResponseWriter, r *http.Request, code int, payload i
 	w.WriteHeader(code)
 	w.Write(response)
 }
+
+func Logout(w http.ResponseWriter, r *http.Request) {
+	authToken := r.Header.Get("Cookie")
+
+	jwtToken := authToken
+
+	if _, ok := TokenPool[jwtToken]; ok {
+		delete(TokenPool, jwtToken)
+	}
+	respondWithJSON(w, r, http.StatusOK, "Successfully logout!")
+}

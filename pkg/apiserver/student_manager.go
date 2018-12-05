@@ -92,11 +92,9 @@ func PatchStudent(w http.ResponseWriter, r *http.Request) {
 	tokenStudent = students[0]
 
 	userData, err := parseBody(r)
+	//testStudent := mongo.Student{}
+
 	log.Println("userData: ", userData)
-	if err != nil {
-		respondWithError(w, r, http.StatusBadRequest, "Invalid request payload")
-		return
-	}
 
 	if username, ok := userData["user_name"].(string); ok {
 		tokenStudent.UserName = username
@@ -111,8 +109,12 @@ func PatchStudent(w http.ResponseWriter, r *http.Request) {
 	if grades, ok := userData["grades"].(map[string]string); ok {
 		tokenStudent.Grades = grades
 	}
-	if courserecords, ok := userData["course_records"].(map[string]map[string]bool); ok {
-		tokenStudent.CourseRecords = courserecords
+	if courserecords, ok := userData["course_records"].(map[string]interface{}); ok {
+		for k, v := range courserecords {
+			log.Println("k: ", k)
+			log.Println("v: ", v)
+			tokenStudent.CourseRecords[k] = v.(map[string]interface{})
+		}
 	}
 
 	if lastname, ok := userData["last_name"].(string); ok {

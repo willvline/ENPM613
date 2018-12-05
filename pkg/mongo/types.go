@@ -5,14 +5,14 @@ import (
 )
 
 type Student struct {
-	StudentID     bson.ObjectId              `bson:"_id"       json:"student_id"`
-	UserName      string                     `bson:"user_name" json:"user_name"`
-	PassWord      string                     `bson:"pass_word" json:"pass_word"`
-	Email         string                     `bson:"email"     json:"email"`
-	Grades        map[string]string          `bson:"grades"    json:"grades"`
-	CourseRecords map[string]map[string]bool `bson:"course_records"   json:"course_records"`
-	LastName      string                     `bson:"first_name"       json:"first_name"`
-	FirstName     string                     `bson:"last_name"       json:"last_name"`
+	StudentID     bson.ObjectId                     `bson:"_id"       json:"student_id"`
+	UserName      string                            `bson:"user_name" json:"user_name"`
+	PassWord      string                            `bson:"pass_word" json:"pass_word"`
+	Email         string                            `bson:"email"     json:"email"`
+	Grades        map[string]string                 `bson:"grades"    json:"grades"`
+	CourseRecords map[string]map[string]interface{} `bson:"course_records"   json:"course_records"`
+	LastName      string                            `bson:"first_name"       json:"first_name"`
+	FirstName     string                            `bson:"last_name"       json:"last_name"`
 }
 
 type Admin struct {
