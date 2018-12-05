@@ -20,12 +20,6 @@ COPY . /go/src/github.com/Johnlovescoding/ENPM613/HOLMS
 
 RUN cd ./cmd && CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main .
 
-# FROM scratch
-
-# WORKDIR /app
-
-# COPY --from=builder /go/src/github.com/Johnlovescoding/ENPM613/HOLMS/main /app/
-
 EXPOSE 8000
 
 CMD ["./cmd/main"]
