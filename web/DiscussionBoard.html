@@ -2,17 +2,17 @@
 <html>
 
 <head>
-
+    <link rel="stylesheet" href="DiscussionBoard.css">
     <title>DiscussionBoard</title>
 
-    
+
 </head>
 
 <body>
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
 
         <div>
-            <h2 class="text-info"><em><u>Lectures</u></em></h2>
+            <h2 class="text-info mb-5"><em><u>DiscussionBoard</u></em></h2>
         </div>
 
 
@@ -20,20 +20,30 @@
         <div class="my-3 p-3 bg-white rounded shadow-sm">
             <h2 class="border-bottom border-gray pb-2 mb-0">Discussion Board</h2>
             <div class="media text-muted pt-3">
+                <p id="box" class="media-body pb-3 mb-2 small lh-125 border-bottom border-gray" style="color:grey;font-size:large">
 
-                <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
-                <p id= "box" class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray" style="color:grey;font-size:large ">
-                    
-                </p >
-
-
+                </p>
             </div>
-            
-
-        </div>
 
 
         </div>
+
+        <form action="">
+            <div class="mt-2">
+                <label  class="comment text-info font-weight-normal font-monospace" for="title" required ><i class="pr-2 fas fa-newspaper"></i>Title: </label>
+                <input class="pxy-1 border border-info rounded bg-light" type="text" id="user_name" maxlength="50" required>
+            </div>
+            <label class="comment text-info font-weight-normal font-monospace" for="textarea"><i class="fas fa-comments pr-2"></i>Please
+                enter your post here: </label>
+            <textarea id="content" class="pxy-2 border border-info rounded bg-light" maxlength="1000" required></textarea>
+            <br>
+            <div class="d-flex flex-row-reverse">
+                <button id="submit" class="btn btn-info mt-1 mb-5">Post</button>
+            </div>
+
+
+        </form>
+
 
 
 
@@ -41,8 +51,10 @@
 
     </div>
 
+
     
-    <script src= "sidebar.js"></script>
+    <script src="DiscussionBoard.js"></script>
 </body>
 
 </html>
+

@@ -14,12 +14,9 @@ import (
 var conf = config.Config{}
 var mongoDB = mongo.MongoDB{}
 
-// Parse the configuration file 'config.toml', and establish a connection to DB
-func init() {
-	//conf.Read()
 
-	//mongoDB.Server = conf.Server
-	//mongoDB.Database = conf.Database
+func init() {
+
 	mongoDB.Server = "mongo:27017"
 	mongoDB.Database = "HOLMS_db"
 	mongoDB.Connect()

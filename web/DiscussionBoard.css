@@ -1,0 +1,12 @@
+textarea{
+    width: 700px;
+    height: 300px;
+}
+
+.comment{
+    font-size: 25px;
+}
+
+form div{
+    width: 700px;
+}

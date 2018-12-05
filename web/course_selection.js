@@ -85,7 +85,7 @@ $('.form-course-selection').submit(function(e){
             };
     }
 
-    console.log(jsonData);
+    //console.log(jsonData);
 
     var url = $(this).attr('action');
     $.ajax({
@@ -95,11 +95,8 @@ $('.form-course-selection').submit(function(e){
         data: JSON.stringify(jsonData),
         xhrFields: { withCredentials: true },
         crossDomain: true,
-        // data: JSON.stringify({
-        //     htmlmedium: htmlmedium,
-        //     jsmedium: jsmedium,
-        //     cssmedium: cssmedium
-        // }),
+        data: JSON.stringify(
+            jsonData),
         // data: JSON.stringify({
         //     htmldifficult: htmldifficult,
         //     jsdifficult: jsdifficult,
@@ -118,6 +115,8 @@ $('.form-course-selection').submit(function(e){
             alert(errormessage.responseJSON.error);
             
             console.log(errormessage);
-    }});
+    }}).done(function(){
+        window.location.href="http://localhost:8080/dashboard.html";
+    });
 
   });

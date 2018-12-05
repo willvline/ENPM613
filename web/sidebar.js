@@ -2,8 +2,12 @@ $('#help').on('click', function() {
     $("#screen").load("Help.html");
 });
 
+$('#HOLMS').on('click', function(){
+    window.location.href="http://localhost:8080/dashboard.html";
+});
 $('#Dashboard').on('click', function() {
-    $("#screen").load("dashboard.html");
+    //$("#screen").load("dashboard.html");
+    window.location.href="http://localhost:8080/dashboard.html";
 });
 
 $('#Myaccount').on('click', function() {
@@ -64,8 +68,8 @@ $('#DiscussionBoard').on('click', function() {
         var i;
         var posts = "";
         for (i = 0; i < data.length; i++) { 
-            posts = posts + '<strong>'+data[i].poster_name+'</strong>' + '<br><strong>'+data[i].post_date+'</strong>' + '<p><em>'+data[i].content+'</em></p >';
-            // $("#box").append('<strong>'+data[i].poster_name+'</strong>' + '<br><strong>'+data[i].post_date+'</strong>' + '<p><em>'+data[i].content+'</em></p >')
+            posts = '<hr>' + '<strong>'+data[i].poster_name+'</strong>' + '<br>'+data[i].post_date + '<p><em>'+data[i].content+'</em></p >' + posts;
+            // $("#box").append('<strong>'+data[i].poster_name+'</strong>' + '<br>'+data[i].post_date + '<p><em>'+data[i].content+'</em></p >')
         }
         $("#box").html(posts);  
     });

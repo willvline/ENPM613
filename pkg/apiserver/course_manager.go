@@ -66,7 +66,7 @@ func getCourse(r *http.Request) ([]mongo.Course, error) {
 // 		respondWithError(w, r, http.StatusBadRequest, "Invalid payload")
 // 		return
 // 	}
-// 	student.CourseRecords[bodyData["course_name"].(map[string]strin)] = map[string]string{}
+// 	student.CourseRecords[bodyData["course_name"].(string)] = map[string]string{}
 
 // 	if err := mongo.PatchStudent(student); err != nil {
 // 		respondWithError(w, r, http.StatusInternalServerError, err.Error())
@@ -111,7 +111,7 @@ func GetCourseChapter(w http.ResponseWriter, r *http.Request) {
 // 		return
 // 	}
 // 	params := mux.Vars(r)
-// 	var courseRecord []map[string]bool
+// 	var courseRecord []map[string]string
 // 	for _, student := range students {
 // 		courseRecord = append(courseRecord, student.CourseRecords[params["course_id"]])
 // 	}
@@ -291,7 +291,9 @@ func PostComment(w http.ResponseWriter, r *http.Request) {
 
 	defer r.Body.Close()
 	comment := mongo.Comment{}
+
 	if err := json.NewDecoder(r.Body).Decode(&comment); err != nil {
+		log.Println(comment)
 		respondWithError(w, r, http.StatusBadRequest, "Invalid request payload")
 		return
 	}

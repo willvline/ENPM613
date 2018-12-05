@@ -11,8 +11,8 @@ type Student struct {
 	Email         string                            `bson:"email"     json:"email"`
 	Grades        map[string]string                 `bson:"grades"    json:"grades"`
 	CourseRecords map[string]map[string]interface{} `bson:"course_records"   json:"course_records"`
-	LastName      string                            `bson:"first_name"       json:"first_name"`
-	FirstName     string                            `bson:"last_name"       json:"last_name"`
+	LastName      string                            `bson:"last_name"       json:"last_name"`
+	FirstName     string                            `bson:"first_name"       json:"first_name"`
 }
 
 type Admin struct {

@@ -1,7 +1,13 @@
+<!-- https://cdn.pixabay.com/photo/2017/01/13/01/22/ok-1976099__340.png -->
 <!DOCTYPE html>
 <html>
 
 <head>
+    <style>
+        img{
+            display: none;
+        }
+    </style>
     <title>lecture directory</title>
 </head>
 
@@ -11,246 +17,254 @@
         <div>
             <h2 class="text-info"><em><u>Lectures</u></em></h2>
         </div>
-        <form class = "form-course-selection" action = 'https://localhost:8080/student'>
-        <table id="myTable" class="table table-hover">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>
-                        Name
-                    </th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th>
-                        Level
-                    </th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th>
-                        Completion
-                    </th>
+        <form class="form-course-selection" action='https://localhost:8080/student'>
+            <table id="myTable" class="table table-hover">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>
+                            Name
+                        </th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th>
+                            Level
+                        </th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th>
+                            Completion
+                        </th>
 
 
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <input id="htmleasy" type="checkbox" name="9" value="A" />
-                    </td>
-                    <td>
-                        <a href="../folder/lecturepage.html">HTML</a>
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <span>easy</span>
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <image style="block-size: 25px; margin-left: 30px;" src="https://cdn.pixabay.com/photo/2017/01/13/01/22/ok-1976099__340.png"></image>
-                    </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <input id="htmleasy" type="checkbox" name="9" value="A" />
+                        </td>
+                        <td>
+                            <a href="../folder/lecturepage.html">HTML</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <span>easy</span>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <image id="htmleasy_img" style="block-size: 25px; margin-left: 30px;" src="https://cdn.pixabay.com/photo/2017/01/13/01/22/ok-1976099__340.png"></image>
+                        </td>
 
 
-                </tr>
-                <tr class="success">
-                    <td>
-                        <input id="jseasy" type="checkbox" name="9" value="A" />
-                    </td>
-                    <td>
-                        <a href="../folder/lecturepage.html">JavaScript</a>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    </tr>
+                    <tr class="success">
+                        <td>
+                            <input id="jseasy" type="checkbox" name="9" value="A" />
+                        </td>
+                        <td>
+                            <a href="../folder/lecturepage.html">JavaScript</a>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
 
-                    </td>
-                    <td>
-                        <span>easy</span>
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
+                        </td>
+                        <td>
+                            <span>easy</span>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <img id="jseasy_img" style="block-size: 25px; margin-left: 30px;" src="https://cdn.pixabay.com/photo/2017/01/13/01/22/ok-1976099__340.png"
+                                alt="">
+                        </td>
 
-                    </td>
-
-                </tr>
-                <tr class="error">
-                    <td>
-                        <input id="csseasy" type="checkbox" name="9" value="A" />
-                    </td>
-                    <td>
-                        <a href="../folder/lecturepage.html">Cascading Style Sheet</a>
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <span>easy</span>
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-
-
-                </tr>
-                <tr class="warning">
-                    <td>
-                        <input id="htmlmedium" type="checkbox" name="9" value="A" />
-                    </td>
-                    <td>
-                        <a href="../folder/lecturepage.html">HTML</a>
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <span>medium</span>
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <image style="block-size: 25px; margin-left: 30px;" src="https://cdn.pixabay.com/photo/2017/01/13/01/22/ok-1976099__340.png"></image>
-                    </td>
-
-                </tr>
-                <tr class="info">
-                    <td>
-                        <input id="jsmedium" type="checkbox" name="9" value="A" />
-                    </td>
-                    <td>
-                        <a href="../folder/lecturepage.html">JavaScript</a>
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <span>medium</span>
-                    </td>
-                    <td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-
-                    </td>
-
-                </tr>
-                <tr class="info">
-                    <td>
-                        <input id="cssmedium" type="checkbox" name="9" value="A" />
-                    </td>
-                    <td>
-                        <a href="../folder/lecturepage.html">Cascading Style Sheet</a>
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <span>medium</span>
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <image style="block-size: 25px; margin-left: 30px;" src="https://cdn.pixabay.com/photo/2017/01/13/01/22/ok-1976099__340.png"></image>
-                    </td>
-
-                </tr>
-                <tr class="info">
-                    <td>
-                        <input id="htmldifficult" type="checkbox" name="9" value="A" />
-                    </td>
-                    <td>
-                        <a href="../folder/lecturepage.html">HTML</a>
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <span>difficult</span>
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    </tr>
+                    <tr class="error">
+                        <td>
+                            <input id="csseasy" type="checkbox" name="9" value="A" />
+                        </td>
+                        <td>
+                            <a href="../folder/lecturepage.html">Cascading Style Sheet</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <span>easy</span>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <image id='htmlmedium_img' style="block-size: 25px; margin-left: 30px;" src="https://cdn.pixabay.com/photo/2017/01/13/01/22/ok-1976099__340.png"></image>
+                        </td>
 
 
-                </tr>
-                <tr class="info">
-                    <td>
-                        <input id="jsdifficult" type="checkbox" name="9" value="A" />
-                    </td>
-                    <td>
-                        <a href="../folder/lecturepage.html">JavaScript</a>
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <span>difficult</span>
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <image style="block-size: 25px; margin-left: 30px;" src="https://cdn.pixabay.com/photo/2017/01/13/01/22/ok-1976099__340.png"></image>
-                    </td>
+                    </tr>
+                    <tr class="warning">
+                        <td>
+                            <input id="htmlmedium" type="checkbox" name="9" value="A" />
+                        </td>
+                        <td>
+                            <a href="../folder/lecturepage.html">HTML</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <span>medium</span>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <image id='htmlmedium_img' style="block-size: 25px; margin-left: 30px;" src="https://cdn.pixabay.com/photo/2017/01/13/01/22/ok-1976099__340.png"></image>
+                        </td>
 
-                </tr>
-                <tr class="info">
-                    <td>
-                        <input id="cssdifficult" type="checkbox" name="9" value="A" />
-                    </td>
-                    <td>
-                        <a href="../folder/lecturepage.html">Cascading Style Sheet</a>
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <span>difficult</span>
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <image style="block-size: 25px; margin-left: 30px;" src="https://cdn.pixabay.com/photo/2017/01/13/01/22/ok-1976099__340.png"></image>
-                    </td>
+                    </tr>
+                    <tr class="info">
+                        <td>
+                            <input id="jsmedium" type="checkbox" name="9" value="A" />
+                        </td>
+                        <td>
+                            <a href="../folder/lecturepage.html">JavaScript</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <span>medium</span>
+                        </td>
+                        
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <image id='jsmedium_img' style="block-size: 25px; margin-left: 30px;" src="https://cdn.pixabay.com/photo/2017/01/13/01/22/ok-1976099__340.png"></image>
+                        </td>
+                        
 
-                </tr>
+                    </tr>
+                    <tr class="info">
+                        <td>
+                            <input id="cssmedium" type="checkbox" name="9" value="A" />
+                        </td>
+                        <td>
+                            <a href="../folder/lecturepage.html">Cascading Style Sheet</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <span>medium</span>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <image id='cssmedium_img' style="block-size: 25px; margin-left: 30px;" src="https://cdn.pixabay.com/photo/2017/01/13/01/22/ok-1976099__340.png"></image>
+                        </td>
 
-            </tbody>
-        </table>
-        <!-- <input style="margin-left: 550px"class="btn" id="submit" type="submit" value="提 交" /> -->
-        <button style="width: 125px; margin-left: 350px" class="btn btn-primary btn-block" type="submit">Submit</button>
-</form>
+                    </tr>
+                    <tr class="info">
+                        <td>
+                            <input id="htmldifficult" type="checkbox" name="9" value="A" />
+                        </td>
+                        <td>
+                            <a href="../folder/lecturepage.html">HTML</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <span>difficult</span>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <img id="htmldifficult_img" style="block-size: 25px; margin-left: 30px;" src="https://cdn.pixabay.com/photo/2017/01/13/01/22/ok-1976099__340.png"
+                                alt="">
+                        </td>
+
+
+                    </tr>
+                    <tr class="info">
+                        <td>
+                            <input id="jsdifficult" type="checkbox" name="9" value="A" />
+                        </td>
+                        <td>
+                            <a href="../folder/lecturepage.html">JavaScript</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <span>difficult</span>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <image id="jsdifficult_img" style="block-size: 25px; margin-left: 30px;" src="https://cdn.pixabay.com/photo/2017/01/13/01/22/ok-1976099__340.png"></image>
+                        </td>
+
+                    </tr>
+                    <tr class="info">
+                        <td>
+                            <input id="cssdifficult" type="checkbox" name="9" value="A" />
+                        </td>
+                        <td>
+                            <a href="../folder/lecturepage.html">Cascading Style Sheet</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <span>difficult</span>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <image id="cssdifficult_img" style="block-size: 25px; margin-left: 30px;" src="https://cdn.pixabay.com/photo/2017/01/13/01/22/ok-1976099__340.png"></image>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+            </table>
+            <!-- <input style="margin-left: 550px"class="btn" id="submit" type="submit" value="提 交" /> -->
+            <button style="width: 125px; margin-left: 350px" class="btn btn-primary btn-block" type="submit">Submit</button>
+        </form>
     </main>
 
     </div>
